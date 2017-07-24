@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="Theme_files/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="Theme_files/jquery/jquery.min.js"></script>
+    <script src="Theme_files/jquery/jquery.js"></script>
+    <link href="Theme_files/bootstrap/css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="Theme_files/bootstrap/css/bootstrap.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var match,
+                pl = /\+/g,  // Regex for replacing addition symbol with a space
+                search = /([^&=]+)=?([^&]*)/g,
+                decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+                query = window.location.search.substring(1);
+
+            urlParams = {};
+            while (match = search.exec(query))
+                urlParams[decode(match[1])] = decode(match[2]);
+
+            var idQS = urlParams.id;
+            if (idQS != null) {
+                $("#titlePage").css('display', 'none');
+                $("#titlePageEditar").css('display', 'block');
+                $.getJSON("http://localhost:1212/api/book/" + idQS, function (data) {
+                    var name = data.Name;
+                    var edition = data.Edition;
+                    var description = data.Description;
+                    var isbn = data.ISBN;
+                    var id = data.Id;
+                    var authorName = data.Authors[0].Name;
+                    var authorBirth = data.Authors[0].BirthDate;
+                    var namePublisher = data.Publisher.Name;
+                    var addressPublisher = data.Publisher.Address;
+                    var zipCodePublisher = data.Publisher.ZipCode;
+
+                    $("#txtId").val(id);
+                    $("#txtNameBook").val(name);
+                    $("#txtDescriptionBook").val(description);
+                    $("#txtEditionBook").val(edition);
+                    $("#txtIsbn").val(isbn);
+                    $("#txtNameAuthor").val(authorName);
+                    $("#txtBirthAuthor").val(authorBirth.substring(0, 10));
+                    $("#txtNamePublisher").val(namePublisher);
+                    $("#txtAdressPublisher").val(addressPublisher);
+                    $("#txtZipPublisher").val(zipCodePublisher);
+                });
+            };
+        });
+
+        $(document).on('click', '.createNew', function () {
+            var id = $("#txtId").val();
+            var nameBook = $("#txtNameBook").val();
+            var descriptionBook = $("#txtDescriptionBook").val();
+            var editionBook = $("#txtEditionBook").val();
+            var isbn = $("#txtIsbn").val();
+            var nameAuthor = $("#txtNameAuthor").val();
+            var birthAuthor = $("#txtBirthAuthor").val();
+            var namePublisher = $("#txtNamePublisher").val();
+            var adressPublisher = $("#txtAdressPublisher").val();
+            var zipCodePublisher = $("#txtZipPublisher").val();
+
+            if (id != "")
+                var method = 'PUT';
+            else
+                var method = 'POST';
+
+            var dataJSON = {
+                "Id": id,
+                "Name": nameBook,
+                "Description": descriptionBook,
+                "Edition": editionBook,
+                "ISBN": isbn,
+                "Authors": [{
+                    "Name": nameAuthor,
+                    "BirthDate": birthAuthor
+                }],
+                "Publisher": {
+                    "Name": namePublisher,
+                    "Address": adressPublisher,
+                    "ZipCode": zipCodePublisher
+                }
+            }
+            $.ajax({
+                type: method,
+                url: 'http://localhost:1212/api/book',
+                data: JSON.stringify(dataJSON),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json'
+            });
+
+            $('.divSuccess').css("display", "block");
+            setTimeout(function () {
+                $('.divSuccess').fadeOut('fade');
+            }, 5000);
+        });
+
+        //<a class="btn btn-default" ><em class="fa fa-pencil" ></em ></a >
+    </script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <title>Livraria HBSIS</title>
+</head>
+<body>
+    <div class="container">
+
+        <form class="well form-horizontal" action=" " method="post" id="contact_form">
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend id="titlePage">Registrar Novo Livro</legend>
+                <legend id="titlePageEditar" style="display:none;">Editar Livro</legend>
+                <div style="margin-left:1000px;">
+                    <a type="button" class="btn btn-default" href="BookList.html">Livros <span class="glyphicon glyphicon-list"></span></a>
+                </div>
+
+                <!-- Text input-->
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Nome</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
+                            <input id="txtNameBook" placeholder="Nome do livro" class="form-control" type="text" required>
+                            <input id="txtId" hidden="hidden" type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Edição</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
+                            <input id="txtEditionBook" type="number" placeholder="Edição do livro" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">ISBN</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                            <input id="txtIsbn" type="number" placeholder="ISBN" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Descrição</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            <textarea class="form-control" id="txtDescriptionBook" placeholder="Descrição do livro"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+
+                <div class="divAutor">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Autores &nbsp;<button type="button" class="close btnPlus" aria-label="Close"><span aria-hidden="true" class="glyphicon glyphicon-plus-sign"></span></button></label>
+                    </div>
+                    <div class="form-group divAutor">
+                        <label class="col-md-4 control-label">Nome</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                <input id="txtNameAuthor" placeholder="Nome do Autor" class="form-control" type="text" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Data de Nascimento</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                <input id="txtBirthAuthor" placeholder="Data Nascimento" class="form-control" type="date">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Editora</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Nome</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                            <input id="txtNamePublisher" placeholder="Nome" class="form-control" type="text" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Endereço</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                            <input id="txtAdressPublisher" placeholder="Endereço da Editora" class="form-control" type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">CEP</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                            <input id="txtZipPublisher" placeholder="CEP da Editora" class="form-control" >
+                        </div>
+                    </div>
+                </div>
+                <!-- Success message -->
+                <div class="divSuccess" style="display:none;">
+                    <div class="alert alert-success" role="alert" id="success_message">Sucesso <i class="glyphicon glyphicon-thumbs-up"></i> Livro cadastrado com sucesso.</div>
+                </div>
+
+            </fieldset>
+        </form>
+
+        <!-- Button -->
+        <div class="form-group">
+            <div class="col-md-4">
+                <button class="btn btn-warning createNew">Salvar  <span class="glyphicon glyphicon-hdd"></span></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
