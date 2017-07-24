@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="Theme_files/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="Theme_files/jquery/jquery.min.js"></script>
+    <script src="Theme_files/jquery/jquery.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var idgeral = 0;
+            $.getJSON("http://localhost:1212/api/book", function (data) {
+                $.each(data, function (key, val) {
+                    var name = val.Name;
+                    var edition = val.Edition;
+                    var description = val.Description;
+                    var isbn = val.ISBN;
+                    var id = val.Id;
+                    var authorName = val.Authors[0].Name;
+                    var authorBirth = val.Authors[0].BirthDate;
+                    var namePublisher = val.Publisher.Name;
+                    var addressPublisher = val.Publisher.Address;
+                    var zipCodePublisher = val.Publisher.ZipCode;
+
+                    $('#booksOnTheTable')
+                        .append('<tr>'
+                        + '<td align= "center" > <a class="btn btn-default editar"><em class="fa fa-pencil"></em></a> <a class="btn btn-danger remover"><em class="fa fa-trash "></em></a></td >'
+                        + '<td class="hidden-xs tdIsbn">' + isbn + '</td>'
+                        + '<td class="hidden-xs tdName">' + name + '</td >'
+                        + '<td class="hidden-xs tdDescription">' + description + '</td >'
+                        + '<td class="tdAuthor">' + authorName + '</td > '
+                        + '<td class="tdEdition">' + edition + '</td > '
+                        + '<td class="tdPublisher">' + namePublisher + '</td > '
+                        + '<td class="tdId" style="display:none;">' + id + '</td ></tr > '
+                        + '<td class="tdAuthorBirth" style="display:none;">' + authorBirth + '</td ></tr > '
+                        + '<td class="tdAddressPublisher" style="display:none;">' + addressPublisher + '</td ></tr > '
+                        + '<td class="tdZipCodePublisher" style="display:none;">' + zipCodePublisher + '</td ></tr > ');
+                });
+            });
+        });
+
+        $(document).on('click', '.remover', function () {
+            $(this).closest('tr').each(function () {
+                var id = $(this).find('.tdId').html();
+                idgeral = id;
+            });
+            $('#divConfirmDelete').css("display", "block");
+        });
+        $(document).on('click', '#btnCancelDelete', function () {
+            $('#divConfirmDelete').css("display", "none");
+        });
+
+
+        $(document).on('click', '#btnConfirmDelete', function () {
+
+            //$(this).closest('tr').each(function () {
+            var id = $(this).find('.tdId').html();
+            id = idgeral;
+            $.ajax({
+                type: 'DELETE',
+                url: 'http://localhost:1212/api/book/' + id,
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json'
+            });
+            $('#divConfirmDelete').css("display", "none");
+
+            idgeral = 0;
+            location.reload();
+        });
+
+        $(document).on('click', '.editar', function () {
+            $(this).closest('tr').each(function () {
+                var id = $(this).find('.tdId').html();
+
+                window.location.assign("RegisterBook.html?id=" + id);
+                //redirect('', dataJSON);
+                //$(this).closest('tr').remove();
+            });
+        });
+        //<a class="btn btn-default" ><em class="fa fa-pencil" ></em ></a >
+    </script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <title>Livraria HBSIS</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10" style="width:100%;">
+                <div class="panel panel-default panel-table">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col col-xs-6">
+                                <h3 class="panel-title"><b>LIVRARIA HBSIS</b></h3>
+                            </div>
+                            <div class="col col-xs-6 text-right">
+                                <a type="button" class="btn btn-sm btn-primary btn-create " href="RegisterBook.html">Registrar Novo Livro</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table id="booksOnTheTable" class="table table-striped table-bordered table-list">
+                            <thead>
+                                <tr>
+                                    <th><em class="fa fa-cog"></em></th>
+                                    <th class="hidden-xs">ISBN</th>
+                                    <th>Nome</th>
+                                    <th>Descrição</th>
+                                    <th>Autor</th>
+                                    <th>Edição</th>
+                                    <th>Editora</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="divConfirmDelete" class="modal" style="display:none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <label>Confirmar Exclusão</label>
+                </div>
+                <div class="modal-body">
+                    Deseja excluir este livro?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCancelDelete">Cancel</button>
+                    <a class="btn btn-danger btn-ok" id="btnConfirmDelete">Delete</a>
+                    <input type="hidden" id="iptHiddenConfirm" />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
