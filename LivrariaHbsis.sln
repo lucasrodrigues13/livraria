@@ -1,0 +1,112 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackEnd", "BackEnd", "{052A1025-CA5D-4283-B564-E708AE93439D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{85A07DFD-5A32-4791-AC8E-862672FBFB0E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{744E0DAC-FD3E-4A14-90F6-A40A7C3F8C08}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Complex Domain", "Complex Domain", "{7C85802E-A44A-4C79-B3CA-E1A4E87D8469}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Book", "Book", "{DE4A6F2B-1CCC-425C-A97B-3E8242858AB9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{333905D0-19CE-4E47-9429-7C4423E45A24}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{A01BCB85-8F34-4C43-BDC5-E39E6F6772EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Repository.MongoDB", "Core.Repository.MongoDB\Core.Repository.MongoDB.csproj", "{22846FB9-7635-4BD5-AD18-08DDAF15A6F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Livraria.Api", "Livraria.Api\Livraria.Api.csproj", "{1C6C2D2B-73B8-4E30-8D7A-3B9BD7F5D330}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Livraria.Api.Tests", "Livraria.Api.Tests\Livraria.Api.Tests.csproj", "{9176DD57-E121-477B-86B8-73EEE3DF361C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{2D8DED0C-AE69-42A9-BA57-CA0489552F8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book.Infra.IoC", "Book.Infra.IoC\Book.Infra.IoC.csproj", "{5E41DD4B-3DBD-4AD6-8A9D-34B4EAC841D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{97DA9751-59C4-448C-A282-2D7B7B09DEDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book.Domain", "Book.Domain\Book.Domain.csproj", "{78FF6C51-A7A9-4E19-A450-0704EC5A598A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Model", "Core.Model\Core.Model.csproj", "{14829163-F4C5-405A-AC6B-6DE6F257D14F}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Livraria(1)", "..\visual studio 2017\WebSites\Livraria\", "{6C159693-219A-4FD5-AC67-8841A0A62B89}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_49943"
+		Debug.AspNetCompiler.PhysicalPath = "..\visual studio 2017\WebSites\Livraria\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49943\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_49943"
+		Release.AspNetCompiler.PhysicalPath = "..\visual studio 2017\WebSites\Livraria\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49943\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "49943"
+		SlnRelativePath = "..\visual studio 2017\WebSites\Livraria\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22846FB9-7635-4BD5-AD18-08DDAF15A6F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22846FB9-7635-4BD5-AD18-08DDAF15A6F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22846FB9-7635-4BD5-AD18-08DDAF15A6F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22846FB9-7635-4BD5-AD18-08DDAF15A6F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C6C2D2B-73B8-4E30-8D7A-3B9BD7F5D330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C6C2D2B-73B8-4E30-8D7A-3B9BD7F5D330}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C6C2D2B-73B8-4E30-8D7A-3B9BD7F5D330}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C6C2D2B-73B8-4E30-8D7A-3B9BD7F5D330}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9176DD57-E121-477B-86B8-73EEE3DF361C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9176DD57-E121-477B-86B8-73EEE3DF361C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9176DD57-E121-477B-86B8-73EEE3DF361C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9176DD57-E121-477B-86B8-73EEE3DF361C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E41DD4B-3DBD-4AD6-8A9D-34B4EAC841D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E41DD4B-3DBD-4AD6-8A9D-34B4EAC841D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E41DD4B-3DBD-4AD6-8A9D-34B4EAC841D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E41DD4B-3DBD-4AD6-8A9D-34B4EAC841D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78FF6C51-A7A9-4E19-A450-0704EC5A598A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78FF6C51-A7A9-4E19-A450-0704EC5A598A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78FF6C51-A7A9-4E19-A450-0704EC5A598A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78FF6C51-A7A9-4E19-A450-0704EC5A598A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14829163-F4C5-405A-AC6B-6DE6F257D14F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14829163-F4C5-405A-AC6B-6DE6F257D14F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14829163-F4C5-405A-AC6B-6DE6F257D14F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14829163-F4C5-405A-AC6B-6DE6F257D14F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C159693-219A-4FD5-AC67-8841A0A62B89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C159693-219A-4FD5-AC67-8841A0A62B89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C159693-219A-4FD5-AC67-8841A0A62B89}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C159693-219A-4FD5-AC67-8841A0A62B89}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{744E0DAC-FD3E-4A14-90F6-A40A7C3F8C08} = {052A1025-CA5D-4283-B564-E708AE93439D}
+		{7C85802E-A44A-4C79-B3CA-E1A4E87D8469} = {052A1025-CA5D-4283-B564-E708AE93439D}
+		{DE4A6F2B-1CCC-425C-A97B-3E8242858AB9} = {7C85802E-A44A-4C79-B3CA-E1A4E87D8469}
+		{333905D0-19CE-4E47-9429-7C4423E45A24} = {7C85802E-A44A-4C79-B3CA-E1A4E87D8469}
+		{A01BCB85-8F34-4C43-BDC5-E39E6F6772EB} = {333905D0-19CE-4E47-9429-7C4423E45A24}
+		{22846FB9-7635-4BD5-AD18-08DDAF15A6F7} = {A01BCB85-8F34-4C43-BDC5-E39E6F6772EB}
+		{1C6C2D2B-73B8-4E30-8D7A-3B9BD7F5D330} = {744E0DAC-FD3E-4A14-90F6-A40A7C3F8C08}
+		{9176DD57-E121-477B-86B8-73EEE3DF361C} = {744E0DAC-FD3E-4A14-90F6-A40A7C3F8C08}
+		{2D8DED0C-AE69-42A9-BA57-CA0489552F8C} = {DE4A6F2B-1CCC-425C-A97B-3E8242858AB9}
+		{5E41DD4B-3DBD-4AD6-8A9D-34B4EAC841D7} = {2D8DED0C-AE69-42A9-BA57-CA0489552F8C}
+		{97DA9751-59C4-448C-A282-2D7B7B09DEDC} = {DE4A6F2B-1CCC-425C-A97B-3E8242858AB9}
+		{78FF6C51-A7A9-4E19-A450-0704EC5A598A} = {97DA9751-59C4-448C-A282-2D7B7B09DEDC}
+		{14829163-F4C5-405A-AC6B-6DE6F257D14F} = {333905D0-19CE-4E47-9429-7C4423E45A24}
+		{6C159693-219A-4FD5-AC67-8841A0A62B89} = {85A07DFD-5A32-4791-AC8E-862672FBFB0E}
+	EndGlobalSection
+EndGlobal
